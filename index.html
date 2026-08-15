@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#17120d">
+<title>The Alchemist's Lock</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header><div class="crest">⚙︎</div><h1>The Alchemist's Lock</h1><div class="sub">D&D rotating conduit puzzle builder</div></header>
+<div class="tabs"><button id="builderTab" class="btn active">DM BUILDER</button><button id="playerTab" class="btn">PLAYER MODE</button></div>
+<section id="builderView" class="panel">
+<div class="builder-wrap">
+<aside class="controls">
+<div class="group"><h3>Puzzle Setup</h3><div class="row"><label>Grid</label><select id="gridSize"><option value="4">4 × 4</option><option value="5" selected>5 × 5</option></select><label>Liquids</label><select id="liquidCount"><option value="2">2</option><option value="3" selected>3</option></select><button id="newPuzzle" class="btn">NEW</button></div></div>
+<div class="group"><h3>Tile Palette</h3><div class="palette" id="palette"><button class="btn tool active" data-tool="straight">Straight</button><button class="btn tool" data-tool="corner">Corner</button><button class="btn tool" data-tool="tee">T</button><button class="btn tool" data-tool="cross">Cross</button><button class="btn tool" data-tool="end">Dead End</button><button class="btn tool" data-tool="wall">Wall</button></div><div class="row gap-top"><button id="rotateSelected" class="btn">ROTATE</button><button id="toggleLock" class="btn">LOCK / UNLOCK</button><button id="clearSelected" class="btn">CLEAR</button></div><div class="note">Tap a board square to place the selected tile. Tap the same tile again to rotate it.</div></div>
+<div class="group"><h3>Sources & Targets</h3><div class="palette" id="markerTools"><button class="btn tool" data-marker="red-source">Red Source</button><button class="btn tool" data-marker="red-target">Red Target</button><button class="btn tool" data-marker="green-source">Green Source</button><button class="btn tool" data-marker="green-target">Green Target</button><button class="btn tool blue-only" data-marker="blue-source">Blue Source</button><button class="btn tool blue-only" data-marker="blue-target">Blue Target</button></div><div class="note">Sources go on the top row. Targets go on the bottom row.</div></div>
+<div class="group"><h3>Build Tools</h3><div class="row"><button id="validateBtn" class="btn">VALIDATE</button><button id="scrambleBtn" class="btn">SCRAMBLE</button><button id="showSolvedBtn" class="btn">SHOW SOLVED</button></div><div class="kpi"><div><strong id="rotatableKpi">0</strong><span>Rotatable</span></div><div><strong id="wrongKpi">0</strong><span>Wrong</span></div><div><strong id="difficultyKpi">—</strong><span>Difficulty</span></div></div></div>
+<div class="group"><h3>Save / Share</h3><div class="row"><button id="saveLocal" class="btn">SAVE</button><button id="loadLocal" class="btn">LOAD</button><button id="exportBtn" class="btn">EXPORT JSON</button><label class="btn" for="importInput">IMPORT JSON</label><input id="importInput" class="file-input" type="file" accept=".json,application/json"></div><div class="note">Save stores the puzzle on this device. Export creates a portable backup.</div></div>
+</aside>
+<main class="board-area"><div id="builderSources" class="sources"></div><div id="builderBoard" class="board"></div><div id="builderSinks" class="sinks"></div><div id="builderStatus" class="status">Build the puzzle in its solved state, then validate and scramble it.</div></main>
+</div>
+</section>
+<section id="playerView" class="player-shell hidden"><div class="panel"><button id="fullscreenBtn" class="btn fullscreen-btn">FULLSCREEN</button><div class="clear"></div><div id="playerSources" class="sources"></div><div id="playerBoard" class="board"></div><div id="playerSinks" class="sinks"></div><div class="stack"><button id="openValvesBtn" class="btn primary">OPEN THE VALVES</button><button id="resetPlayerBtn" class="btn">RESET PUZZLE</button><button id="backToBuilderBtn" class="btn">DM BUILDER</button></div><div id="playerStatus" class="status">Tap an unlocked conduit to rotate it 90° clockwise.</div></div></section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
